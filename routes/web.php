@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +17,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('tasks',function(){
-    $tasks = DB ::table ('tasks')->get();
-    return view('tasks',compact('tasks'));
+Rout::get('task', function(){
+    $tasks = DB::table('tasks')->get();
+    //dd($tasks);
+    return view('tasks');
 });
-Rout::get('/show/{id}', function ($id) {
-    $task = DB::table('std')->find($id);
-    return view('show',compact(('task')));
+Route::get('tasks/show/{id}', function($id){
+    $task = DB::table('tasks')->where('id',$id)->find($id);
+    dd($task);
+    return view('show', compact('task'));
 });
+Route::get('app', function(){
+    $tasks = DB::table('tasks')->get();
+    return view('todo', compact('tasks'));
+});
+Rout::post('store', function(Request $request){
+    DB::table('tasks')->insert([
+     'title' => $request->title
+    ]);
+    return redirect()->back();
+});
+
