@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+section('content')
 <div class="container">
         <style>
             .uper {
@@ -33,12 +32,3 @@
 </body>
 
 </html>
-
-                                
-                                    @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-        </div>
-@endsection
