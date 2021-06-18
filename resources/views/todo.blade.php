@@ -62,10 +62,10 @@
 	                            </td>
 	                            <!-- Task Delete Button -->
 	                            <td>
-	                                <form action="delete/{{ $task->id }}" method="post">
-                                        @csrf
+	                                <form action="#" method="POST">
 	                                    <button class="btn btn-danger" type="submit">
-	                                        <i class="fa fa-btn fa-trash"></i>
+	                                        <i class="fa fa-btn fa-trash">
+	                                        </i>
 	                                        Delete
 	                                    </button>
 	                                </form>

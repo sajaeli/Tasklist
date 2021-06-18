@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Models\Task;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,38 +20,19 @@ Route::get('/', function () {
 
 Route::get('/app', function () {
 
-    // $tasks = DB::table('tasks')->orderby('title')->get();
-    // $tasks = Task::all();
-    $tasks = Task::orderby('title')->get();
+    $tasks = DB::table('tasks')->orderby('title')->get();
 
     return view('todo',compact('tasks'));
 
 });//emnd of route
 
-Route::post('delete/{id}', function (Request $request,$id) {
-
-    $task = Task::find($id);
-
-    $task->delete();
-
-    return redirect()->back();
-
-});//emnd of route
-
-
 Route::post('store', function (Request $request) {
 
-    // DB::table('tasks')->insert([
+    DB::table('tasks')->insert([
 
-    //     'title' => $request->title,
+        'title' => $request->title,
 
-    // ]);
-
-    $task = new Task;
-    
-    $task->title = $request->title;
-
-    $task->save();
+    ]);
 
     return redirect()->back();
 
